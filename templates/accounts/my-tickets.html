@@ -1,0 +1,54 @@
+{% extends '_layout/base.html' %}
+{% load static %}
+{% load crispy_forms_tags  %}
+
+{% block title %}
+    بلیط های من
+{% endblock %}
+
+{% block content %}
+    <!-- start section -->
+            <section style="background-color: #ffa859 "  class="wow animate__fadeIn">
+            <div class="container">
+
+                <div style="padding-top: 150px; padding-bottom: 150px" class="row justify-content-center">
+
+                    <div style='direction:rtl' class="col-12 col-xl-5 offset-xl-1 col-md-6 lg-padding-30px-lr md-padding-15px-lr">
+                        <h4 style="text-align: right" class="alt-font font-weight-500 text-extra-dark-gray">بلیط های من</h4>
+                        <hr/>
+                        <table class="table table-hover table-responsive-lg">
+  <thead>
+    <tr>
+      <th scope="col">ردیف</th>
+      <th scope="col">نام و نام خانوادگی</th>
+      <th scope="col">مسابقه</th>
+      <th scope="col">شماره تلفن</th>
+<th scope="col">بلیط</th>
+    </tr>
+  </thead>
+   {% for item in ticket %}
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>{{ item.full_name }}</td>
+          <td>{{ item.event }}</td>
+          <td>{{ item.phone }}</td>
+            <td>
+                <form action="{% url 'events:print-ticket' %}"  method="post" >
+                    {% csrf_token %}
+                    <input type="hidden" name="ticket_id" value="{{ item.id }}">
+                    <button type="submit" class="btn btn-primary">دانلود بلیط</button>
+                </form>
+            </td>
+        </tr>
+      </tbody>
+    {% endfor %}
+</table>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+{% endblock %}

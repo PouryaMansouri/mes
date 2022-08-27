@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ticket</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+.float-left {
+float:left;
+width:300px; // or 33% for equal width independent of parent width
+}
+body {
+  {#background:url('https://unsplash.it/800/1200/?random');#}
+  background-size:cover;
+  background-color: gray;
+}
+.contenido {
+  margin: 30px auto;
+  max-height: 430px;
+  max-width: 245px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgb(202, 202, 204);
+  background-color:;
+  border-radius: 2px;
+}
+.details {
+  padding: 26px;
+  background:white;
+  border-top: 1px dashed #c3c3c3;
+}
+.tinfo {
+  font-size: 0.5em;
+  font-weight: 300;
+  color: #c3c3c3;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin:7px 0;
+}
+
+.tdata {
+  font-size: 0.7em;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.5px;
+  margin:7px 0;
+}
+
+.name {
+  font-size: 1.3em;
+  font-weight: 300;
+}
+
+.link {
+  text-align: center;
+  margin-top:10px;
+}
+
+a {
+  text-decoration: none;
+  color:#55C9E6;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.7px;
+  font-size: 0.7em;
+}
+.hqr{
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  margin: 0px auto;
+}
+  .left-one{
+  background-repeat: no-repeat;
+  background-image: radial-gradient(circle at 0 96% , rgba(0,0,0,0) .2em, gray .3em, white .1em);
+}
+  .right-one{
+  background-repeat: no-repeat;
+  background-image: radial-gradient(circle at 100% 96% , rgba(0,0,0,0) .2em, gray .3em, white .1em);
+}
+.column
+{
+    display: table-cell;
+    padding: 37px 0px;
+}
+.center{
+  background:white;
+}
+
+#qrcode img{
+  height:70px;
+  width:70px;
+  margin: 0 auto;
+}
+.masinfo{
+  display:block;
+}
+.left,.right{
+  width:49%;
+  display:inline-table;
+}
+
+.nesp{
+  letter-spacing: 0px;
+}
+
+    </style>
+</head>
+<body>
+<div class="contenido">
+  <div class="ticket">
+    <div class="hqr">
+      <div class="column left-one"></div>
+      <div class="column center">
+        <div id="qrcode"></div>
+      </div>
+      <div class="column right-one"></div>
+    </div>
+    </div>
+    <div class="details">
+      <div class="tinfo">
+        نام و نام خانوادگی
+      </div>
+      <div class="tdata name">
+        {{ name }}
+      </div>
+      <div class="tinfo">
+        کد ملی
+      </div>
+      <div class="tdata">
+{{ national_code }}
+      </div>
+      <div class="tinfo">
+        ورزشگاه
+      </div>
+      <div class="tdata">
+                  بازی تیم های
+          <br>
+          {{ team_a }}
+                    <br>
+    و
+                    <br>
+          {{ team_b }}
+                    <br>
+      </div>
+      <div class="masinfo">
+        <div class="left">
+         <div class="tinfo">
+        date
+      </div>
+      <div class="tdata nesp">
+        {{ date }}
+      </div>
+        </div>
+        <div class="right">
+        <div class="tinfo">
+        محل برگزاری
+      </div>
+      <div class="tdata nesp">
+                {{ location }}
+
+      </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script>
+    var qrcode = new QRCode("qrcode");
+    function makeCode () {
+	var elText ="{{ unique_code }}";
+	qrcode.makeCode(elText);
+}
+makeCode();
+</script>
+</body>
+
+</html>
