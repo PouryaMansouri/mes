@@ -20,7 +20,7 @@ class TicketSerializer(serializers.ModelSerializer):
         except Ticket.DoesNotExist:
             ticket = Ticket(**validated_data)
             # add who buy ticket
-            ticket.user = self.context['request'].user
+            ticket.user = self.context['request'].user or None
             ticket.status = Ticket.STATUS.SUCCESSFUL
             ticket.save()
             ticket.event_capacity_reducer()

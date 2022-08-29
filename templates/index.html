@@ -148,17 +148,23 @@
                                                                 data-bs-target="#eventticketmodal">رزرو بلیط
                                                     </button>
                                                 {% endif %}
-                                                {% else %}
-                                                    <form action="{% url 'accounts:login'  %}" method="get">
-                                                        <button type="submit" class="read-more"
-                                                                style="font-family: b yekan">
-                                                            برای رزرو بلیط باید وارد سایت شوید
-                                                        </button>
-                                                    </form>
-                                                {% endif %}
+
+{#                                                {% else %}#}
+{#                                                    <form action="{% url 'accounts:login'  %}" method="get">#}
+{#                                                        <button type="submit" class="read-more"#}
+{#                                                                style="font-family: b yekan">#}
+{#                                                            برای رزرو بلیط باید وارد سایت شوید#}
+{#                                                        </button>#}
+{#                                                    </form>#}
+{#                                                {% endif %}#}
 
                                                 {% endif %}
-
+                                            {% endif %}
+<div style="padding-top: 10px">
+                                                    <button class="btn btn-success">
+                                                        <a href="https://www.belitmes.com/accounts/login/">ثبت نام</a>
+                                                    </button>
+                                                    </div>
                                             </div>
                                         </div>
                                     </div>

@@ -92,9 +92,10 @@
 
             success: function (success) {
                 $('.field-errors').remove()
-                $('.ticket-form').html(`<p class="text-white border border-success bg-success p-2 rounded" style="font-family: b yekan">هوادار گرامی بلیط شما برای بازی مس-قشقایی با کدملی ${success.national_code} در تاریخ 15 اردیبهشت رزرو گردید.<br/>لطفا در هنگام ورود کارت ملی و کارت واکسن همراه داشته باشید.<br/>از ورود شما بدون کارت واکسن جلوگیری خواهد شد. <br/></p> `).hide().fadeIn()
+                $('.ticket-form').html(`<p class="text-white border border-success bg-success p-2 rounded" style="font-family: b yekan">هوادار گرامی بلیط شما برای بازی مس-گل گهر سیرجان در تاریخ 8 اردیبهشت رزرو گردید.<br/>لطفا بلیط خود را از قسمت بلیط من دریافت و در هنگام به همراه داشته باشید.<br/>از ورود شما بدون کارت واکسن جلوگیری خواهد شد. <br/></p> `).hide().fadeIn()
                 $('#reserve_button').addClass('d-none')
                 $('#buy-ticket-button').removeClass('read-more').addClass('btn btn-success').html('رزرو شد')
+                window.location.href = "https://www.belitmes.com/accounts/my-tickets/";
             },
             error: function (error) {
                 $('.field-errors').remove()

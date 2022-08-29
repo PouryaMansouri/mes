@@ -23,11 +23,14 @@ class UserRegisterView(View):
 
     def post(self, request):
         form = self.form_class(request.POST)
+        password = request.POST['password']
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)
+            user.set_password(password)
+            user.save()
+            login(request, user)
             return redirect('events:index')
         return render(request, self.template_name, {'form_register': form})
-
 
 
 class UserLoginView(View):
@@ -62,13 +65,10 @@ class UserLogoutView(LoginRequiredMixin, View):
         logout(request)
         return redirect('events:index')
 
-    def post(self):
-        pass
-
 
 class MyTicketView(View):
     template_name = 'accounts/my-tickets.html'
 
     def get(self, request):
-        tickets = Ticket.objects.filter(user=request.user,status=Ticket.STATUS.SUCCESSFUL)
+        tickets = Ticket.objects.filter(user=request.user, status=Ticket.STATUS.SUCCESSFUL)
         return render(request, self.template_name, {'ticket': tickets})

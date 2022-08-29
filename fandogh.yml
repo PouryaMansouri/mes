@@ -1,5 +1,5 @@
 kind: ExternalService
-name: belitmesnew3
+name: belitmes20
 spec:
   image_pull_policy: Always
   port: 80

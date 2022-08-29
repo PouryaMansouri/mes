@@ -148,7 +148,7 @@ class Ticket(BaseModel):
     national_code = models.CharField(
         max_length=10,
         verbose_name=_('کدملی'),
-        validators=[validators.validate_iran_national_code]
+        unique=False
     )
 
     is_used = models.BooleanField(
@@ -166,7 +166,7 @@ class Ticket(BaseModel):
     )
     status = models.IntegerField(
         choices=STATUS.choices,
-        default=STATUS.PENDING,
+        default=STATUS.SUCCESSFUL,
         verbose_name=_('وضعیت'),
     )
 
@@ -181,11 +181,9 @@ class Ticket(BaseModel):
         null=True,
         blank=True
     )
-    unique_code = models.UUIDField(
-        verbose_name=_('کد یکتا'),
-        default=uuid.uuid4,
-        editable=False,
-        unique=True,
+    unique_code = models.CharField(
+        max_length=230,
+        verbose_name=_('کد یکتا'),null=True,blank=True
     )
 
 

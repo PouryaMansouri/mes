@@ -38,9 +38,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     # properties
     first_name = models.CharField(max_length=50,null=True, blank=True, verbose_name=_("نام"), )
     last_name = models.CharField(max_length=50,null=True, blank=True, verbose_name=_("نام خانوادگی"), )
-    email = models.EmailField(unique=True, null=True, blank=True, verbose_name=_("ایمیل"), )
+    email = models.EmailField(unique=False, null=True, blank=True, verbose_name=_("ایمیل"), )
     phone_number = models.CharField(unique=True, max_length=20, verbose_name=_("شماره موبایل"), )
-    national_code = models.CharField(max_length=10, unique=True, verbose_name=_('کدملی'), )
+    national_code = models.CharField(max_length=10, unique=False, verbose_name=_('کدملی'), )
     # auth fields
     is_staff = models.BooleanField(
         _('staff status'),
