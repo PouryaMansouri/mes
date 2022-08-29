@@ -111,7 +111,7 @@ a {
     </style>
 </head>
 <body>
-<div class="contenido">
+<div class="contenido" style="direction: rtl">
   <div class="ticket">
     <div class="hqr">
       <div class="column left-one"></div>
@@ -174,7 +174,7 @@ a {
 <script>
     var qrcode = new QRCode("qrcode");
     function makeCode () {
-	var elText ="{{ unique_code }}";
+	var elText ="1928375";
 	qrcode.makeCode(elText);
 }
 makeCode();
