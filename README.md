@@ -1,4 +1,1 @@
 # tiket
-# mes
-# mes
-# mes
